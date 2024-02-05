@@ -2,7 +2,7 @@
   include_once('includes/loginChecker.php');
   include_once('../../includes/conn.php');
   try{
-    $sql = "SELECT * FROM users";
+    $sql = "SELECT `id`, `title`, `model`, `category` FROM `cars`";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();
@@ -16,7 +16,7 @@
 
 <head>
 <?php
-  $title = "Users";
+  $title = "Car List";
   include_once('includes/head.php');
 ?>
 </head>
@@ -47,10 +47,9 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Created At</th>
-                  <th>Active</th>
+                  <th>Title</th>
+                  <th>Model</th>
+                  <th>Category</th>
                   <th>Delete</th>
                   <th>Update</th>
                 </tr>
@@ -59,23 +58,16 @@
               <?php
                 foreach($result as $row){
                   $id = $row['id'];
-                  $name = $row['name'];
-                  $email = $row['email'];
-                  if($row['active']){
-                    $active = "Yes";
-                  }else{
-                    $active = "No";
-                  }
-                  
-                  $created_at = $row['created_at'];
+                  $title = $row['title'];
+                  $model = $row['model'];
+                  $category = $row['category'];
               ?>
                 <tr>
-                  <td><?php echo  $name ?></td>
-                  <td><?php echo  $email ?></td>
-                  <td><?php echo  $created_at ?>m</td>
-                  <td><?php echo  $active ?></td>
-                  <td><a href="deleteUser.php?id=<?php echo $id ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../assets/images/delete.png" alt=Delete"></a></td>
-                  <td><a href="updateUser.php?id=<?php echo $id ?>"><img src="../assets/images/update.png" alt=Delete"></a></td>
+                  <td><?php echo  $title ?></td>
+                  <td><?php echo  $model ?></td>
+                  <td><?php echo  $category ?>m</td>
+                  <td><a href="deleteCar.php?id=<?php echo $id ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../assets/images/delete.png" alt=Delete"></a></td>
+                  <td><a href="updateCar.php?id=<?php echo $id ?>"><img src="../assets/images/update.png" alt=Delete"></a></td>
                 </tr>
               <?php
                 }
