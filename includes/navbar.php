@@ -1,4 +1,4 @@
-    <!-- Navbar Start -->
+<!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="position-relative px-lg-5" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
@@ -10,8 +10,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.php" class="nav-item nav-link active">Home</a>
-                        <a href="about.php" class="nav-item nav-link">About</a>
+                        <a href="index.php" class="nav-item nav-link <?php echo $title == "Car Project" ? "active" :"" ?>">Home</a>
+                        <a href="about.php" class="nav-item nav-link <?php echo $title == "About" ? "active" :"" ?>">About</a>
                         <a href="service.php" class="nav-item nav-link">Service</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
@@ -28,7 +28,7 @@
                                 <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+                        <a href="contact.php" class="nav-item nav-link <?php echo $title == "Contact Us" ? "active" :"" ?>">Contact</a>
                     </div>
                 </div>
             </nav>

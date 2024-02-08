@@ -2,7 +2,7 @@
   include_once('includes/loginChecker.php');
   include_once('../../includes/conn.php');
   try{
-    $sql = "SELECT `id`, `title`, `model`, `category` FROM `cars`";
+    $sql = "SELECT cars.id, cars.title, cars.model, categories.category FROM cars INNER JOIN categories on categories.id = cars.category_id; ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();
